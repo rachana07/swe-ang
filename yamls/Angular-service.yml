@@ -1,12 +1,15 @@
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
-name: angular-service
+  labels:
+    app: angular
+  name: angular-service
+  namespace: default
 spec:
-selector:
-app: angular
-ports:
-- protocol: TCP
-port: 80
-targetPort: 80
-type: LoadBalancer
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: angular
+  type: LoadBalancer
